@@ -1,0 +1,94 @@
+
+< 쇼핑몰 프로젝트 설계 작업 일지 >
+
+# 2022년 5월 10일 (화) 작업 일지
+1. 관리자의 영역, 사용자의 영역으로 나누어서 Java 파일과 JSP 파일을 관리
+
+(1) src: Java 파일 관리 - 패키지를 나누어서 관리
+-- DTO(Data Transfer Object), VO(value Object), DataBean
+-- DAO(Data Access object), DBBean
+
+- mall 패키지: 사용자의 영역
+- manager 패키지: 관리자의 영역
+
+- manager 패키지: logon 패키지, product 패키지
+- mall: 
+
+(2) WebContent: JSP 파일 관리 - 폴더(디텍토리)를 나누어서 관리
+- mall 폴더: 사용자의 영역
+- manager 폴더: 관리자의 영역
+
+- manager 폴더: logon 폴더, product 폴더
+- mall: 
+
+
+# 2022년 05월 11일 (수) 작업 일지
+1. JDBCUtil, ManagerDAO 클래스 작성 -> 관리자 로그인 화면
+2. managerMain.jsp 페이지 작성 -> 관리자의 역할을 기능별로 메뉴로 생성
+
+
+
+3. 와인 쇼핑몰의 상품 분류 코드 설정
+-- product테이블 
+create table product (
+product_id bigint primary key auto_increment,
+product_kind varchar(3) not null,
+product_name varchar(50) not null,
+product_price int not null,
+product_count int not null,
+wine_origin varchar(50),
+wine_variety varchar(30),
+alcoholicity varchar(10),
+amount int,
+product_image varchar(30) default 'nothing.jpg',
+product_content varchar(30) default 'nothing.jpg',
+discount_rate int default 10,
+reg_date datetime  default now()
+);
+
+
+product_kind 번호 할당
+
+Aperitif Wine : 식사를 하기전에 마시면 좋은 와인 (식전주)
+110 - 내추럴 와인
+120 - 샴페인
+130 - 스파클링 와인
+
+Table Wine : 식사 중에 메인 요리와 곁들이면 좋은 와인
+210 - 레드 와인
+220 - 화이트 와인
+
+Dessert Wine : 식사 후 디저트로 마시면 좋은 와인
+310 - 로제 와인
+320 - 주정강화
+
+와인 악세사리
+410 - 와인 글라스
+420 - 코르크 스크류
+
+-- 와인 보관용구
+510 - 와인 렉
+520	- 와인 셀러
+
+
+# 2022년 5월 17일 (화) 작업 일지
+1. 사용자 영역인 mall안에 shopping 영역안에 작업을 시작
+- 상품에 대한 메인 페이지, 상품에 대한 상세 페이지
+
+2. 상품의 메인 페이지의 구성
+- 상단과 하단의 2영역은 모든 페이지에 같은 형태로 존재함
+- shopAll안에 shopTop + shopMain + shopBottom이 포함
+- 상단: top, header -> 쇼핑몰의 모든 페이지 상단에 존재
+- 본문: main -> 쇼핑몰에서 상품을 나열하는 본문 페이지
+- 하단: bottom, footer -> 쇼핑몰의 모든 페이지 하단에 존재
+
+
+# 2022년 5월 20일 (금) 작업 일지, 
+- 상단 메인 메뉴 구성
+<메뉴 구성>
+100번대 - 소설/시/에세이
+200번대 - 인문
+300번대 - 경제/자지계발/
+400, 500번대 - 여행/잡지
+600, 700번대 - 가정/건강
+800, 900번대 - IT/수험서
